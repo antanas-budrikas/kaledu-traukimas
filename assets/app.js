@@ -234,6 +234,7 @@ const ORG_KEY = "kt:organizer";
 const org = store.get(ORG_KEY, { people: "", colors: "", draw: null, emails: {}, sent: {} });
 const saveOrg = () => store.set(ORG_KEY, org);
 let organizerReady = false;
+const shownLinks = new Set();
 
 const linkFor = (token) => `${location.origin}${location.pathname}#k=${token}`;
 const inviteText = (name) =>
@@ -409,7 +410,22 @@ function renderLinks() {
             }
           },
         }, h("span", { html: icon("copy") }), "Kopijuoti"),
+        h("button", {
+          class: "btn btn-secondary", type: "button",
+          "aria-expanded": String(shownLinks.has(name)), "aria-controls": `url-${emailId}`,
+          onclick: () => {
+            shownLinks.has(name) ? shownLinks.delete(name) : shownLinks.add(name);
+            renderLinks();
+            $(`#url-${emailId}`)?.select();
+          },
+        }, h("span", { html: icon(shownLinks.has(name) ? "eye-slash" : "eye") }), shownLinks.has(name) ? "Slėpti" : "Rodyti"),
       );
+
+      const urlField = shownLinks.has(name) && h("input", {
+        id: `url-${emailId}`, class: "link-url", type: "text", readonly: true,
+        "aria-label": `${name} nuoroda`, onfocus: (e) => e.target.select(),
+      });
+      if (urlField) urlField.value = url;
 
       return h("li", { class: "link-row" },
         h("div", { class: "link-who" },
@@ -417,7 +433,8 @@ function renderLinks() {
           h("span", {}, name),
           org.sent[name] && h("span", { class: "sent" }, h("span", { html: icon("check") }), "išsiųsta")),
         input,
-        actions);
+        actions,
+        urlField);
     }),
   );
 }
