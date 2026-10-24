@@ -8,8 +8,8 @@ import {
   vocative,
   dative,
   colorSwatch,
-} from "./draw.js";
-import { icon } from "./icons.js";
+} from "./draw.js?v=ad7df74";
+import { icon } from "./icons.js?v=ad7df74";
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];

@@ -18,4 +18,6 @@ python3 -m http.server 8765   # preview at http://localhost:8765/
 npm test                      # draw logic tests (node --test, no dependencies)
 ```
 
+GitHub Pages serves files with a 10 minute cache. After changing an asset, update the `?v=` tag on the references in `index.html` and the imports in `assets/app.js` so browsers load the new version.
+
 Fonts: Bricolage Grotesque and Figtree, self-hosted (OFL). Icons: Phosphor (MIT), inlined in `assets/icons.js`.
