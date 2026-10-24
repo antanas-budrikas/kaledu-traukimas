@@ -446,7 +446,8 @@ textarea { resize: vertical; line-height: 1.5; field-sizing: content; min-height
   font-family: var(--font-display); font-weight: 700;
 }
 .sent { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--success); font-size: var(--step--1); }
-.link-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--space-2); }
+.link-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+.link-url { grid-column: 1 / -1; font-size: var(--step--1); background: var(--surface-2); }
 @media (min-width: 900px) { .link-actions { display: flex; } }
 .link-actions .btn { min-height: 44px; padding: 0 var(--space-4); font-size: var(--step--1); }
 .links-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
