@@ -116,6 +116,9 @@ test("Lithuanian name forms", () => {
     ["Skaistė", "Skaiste", "Skaistei"],
     ["Petras", "Petrai", "Petrui"],
     ["Aušrinė", "Aušrine", "Aušrinei"],
+    ["Tėtis", "Tėti", "Tėčiui"],
+    ["Kęstutis", "Kęstuti", "Kęstučiui"],
+    ["Vaidis", "Vaidi", "Vaidžiui"],
   ];
   for (const [name, voc, dat] of cases) {
     assert.equal(vocative(name), voc, `vocative ${name}`);
