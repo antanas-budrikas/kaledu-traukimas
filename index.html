@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kalėdų traukimas</title>
+  <meta name="description" content="Šeimos Kalėdų traukimas: sužinok, kam šiemet ruoši dovaną ir kokios spalvos ji bus.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f2f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1f17" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="lt_LT">
+  <meta property="og:title" content="Kalėdų traukimas">
+  <meta property="og:description" content="Atidaryk savo nuorodą ir sužinok, kam šiemet ruoši dovaną ir kokios spalvos ji bus.">
+  <meta property="og:image" content="https://antanas-budrikas.github.io/kaledu-traukimas/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/figtree-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    try { const t = localStorage.getItem("kt:theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pereiti prie turinio</a>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="brand-mark" data-icon="tree-evergreen"></span>
+      <span>Kalėdų traukimas <span class="brand-year" data-year></span></span>
+    </a>
+    <button class="btn-ghost theme-toggle" type="button" data-theme-toggle aria-label="Perjungti šviesų ar tamsų režimą"></button>
+  </header>
+
+  <main id="main" class="page">
+    <noscript><p class="noscript">Kad traukimas veiktų, naršyklėje įjunk JavaScript.</p></noscript>
+
+    <!-- Landing: opened without a personal link -->
+    <section class="view view-split" data-view="home" hidden aria-labelledby="home-title">
+      <div class="copy">
+        <h1 id="home-title">Šiemet traukiame žmogų ir spalvą</h1>
+        <p class="lead">Kiekvienas gavo asmeninę nuorodą. Atidaryk ją, išpakuok dovaną ir sužinosi, kam ją ruoši ir kokios spalvos ji turi būti.</p>
+        <ul class="facts">
+          <li><span data-icon="lock-simple"></span>Savo porą matai tik tu.</li>
+          <li><span data-icon="gift"></span>Savo šeimos narių neištrauksi.</li>
+          <li><span data-icon="snowflake"></span>Prisijungti nereikia.</li>
+        </ul>
+        <p class="muted">Nuorodos dar negavai? Paklausk organizatoriaus.</p>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="gift gift-idle">
+          <div class="gift-bow"></div>
+          <div class="gift-lid"></div>
+          <div class="gift-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal link -->
+    <section class="view view-ticket" data-view="ticket" hidden aria-labelledby="ticket-title">
+      <div class="copy ticket-head">
+        <h1 id="ticket-title">Labas, <span data-voc></span>!</h1>
+        <p class="lead" data-ticket-lead>Tavo dovana jau laukia. Išpakuok ją ir sužinok, kam šiemet ruoši dovaną ir kokios spalvos ji bus.</p>
+      </div>
+
+      <div class="stage">
+        <button class="gift gift-button" type="button" data-gift aria-label="Išpakuoti dovaną">
+          <span class="gift-bow"></span>
+          <span class="gift-lid"></span>
+          <span class="gift-box"></span>
+        </button>
+
+        <article class="result" data-result hidden tabindex="-1" aria-labelledby="result-label">
+          <p class="result-label" id="result-label">Šiemet dovaną ruoši</p>
+          <p class="result-name" data-receiver></p>
+          <div class="result-color">
+            <span class="swatch" data-swatch></span>
+            <div>
+              <p class="result-label">Dovanos spalva</p>
+              <p class="result-color-name" data-color></p>
+            </div>
+          </div>
+          <p class="secret"><span data-icon="lock-simple"></span>Tai paslaptis. Niekam neišduok!</p>
+        </article>
+      </div>
+
+      <div class="ticket-actions">
+        <div class="draw-actions" data-draw-actions>
+          <button class="btn btn-primary btn-lg" type="button" data-draw>
+            <span data-icon="gift"></span><span data-draw-label>Traukti</span>
+          </button>
+          <p class="help">Rezultatas tavo ir nesikeis, net jei nuorodą atidarysi dar kartą.</p>
+        </div>
+
+        <form class="remind" data-remind hidden novalidate>
+          <label for="remind-email">Nusiųsk sau priminimą</label>
+          <div class="field-row">
+            <input id="remind-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vardas@pastas.lt" aria-describedby="remind-help">
+            <button class="btn btn-primary" type="submit"><span data-icon="paper-plane-tilt"></span>Siųsti</button>
+          </div>
+          <p class="help" id="remind-help">Atsidarys tavo el. pašto programa su paruoštu laišku. Adreso niekur nesaugome.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Broken or tampered link -->
+    <section class="view view-narrow" data-view="invalid" hidden aria-labelledby="invalid-title">
+      <span class="notice-icon" data-icon="warning"></span>
+      <h1 id="invalid-title">Ši nuoroda neveikia</h1>
+      <p class="lead">Gali būti, kad ji nukopijuota ne visa. Paprašyk organizatoriaus atsiųsti ją dar kartą.</p>
+      <a class="btn btn-secondary" href="./">Į pradžią</a>
+    </section>
+
+    <!-- Organizer -->
+    <section class="view view-organizer" data-view="organizer" hidden aria-labelledby="org-title">
+      <div class="org-intro">
+        <h1 id="org-title">Traukimo paruošimas</h1>
+        <p class="lead">Surašyk dalyvius ir spalvas, ištrauk burtus ir išsiųsk kiekvienam jo nuorodą. Poros niekur nerodomos, todėl ir tu nesužinosi, kas ką ištraukė.</p>
+      </div>
+
+      <form class="org-form" data-org-form novalidate>
+        <div class="field">
+          <label for="people">Dalyviai</label>
+          <p class="help" id="people-help">Vienoje eilutėje surašyk žmones, kurie negali traukti vienas kito, pavyzdžiui, šeimą. Atskirk pliusu arba kableliu.</p>
+          <textarea id="people" name="people" rows="7" spellcheck="false" aria-describedby="people-help" placeholder="Ona + Jonas&#10;Rasa + Tomas + Gintarė&#10;Vytautas"></textarea>
+          <div class="preview" data-people-preview aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="colors">Spalvos</label>
+          <p class="help" id="colors-help">Po vieną eilutėje arba atskirk kableliu. Jei spalvų mažiau nei žmonių, jos kartosis.</p>
+          <textarea id="colors" name="colors" rows="7" spellcheck="false" aria-describedby="colors-help" placeholder="Balta&#10;Raudona&#10;Auksinė"></textarea>
+          <div class="preview swatch-row" data-colors-preview aria-live="polite"></div>
+        </div>
+
+        <div class="org-submit">
+          <p class="form-status" data-status role="status"></p>
+          <button class="btn btn-primary btn-lg" type="submit" data-generate><span data-icon="sparkle"></span>Traukti burtus</button>
+        </div>
+      </form>
+
+      <section class="links" data-links hidden aria-labelledby="links-title">
+        <div class="links-head">
+          <h2 id="links-title">Asmeninės nuorodos</h2>
+          <p class="muted" data-links-meta></p>
+        </div>
+        <p class="help">Išsiųsk kiekvienam tik jo nuorodą. Įrašyk el. paštą, jei nori siųsti laišku. Savo nuorodą atidaryk tik sau.</p>
+        <ul class="link-list" data-link-list></ul>
+        <div class="links-actions">
+          <button class="btn btn-secondary" type="button" data-copy-all><span data-icon="copy"></span>Kopijuoti visas</button>
+          <button class="btn btn-ghost" type="button" data-reset><span data-icon="arrow-counter-clockwise"></span>Traukti iš naujo</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Sukurta su Claude Code</p>
+    <a href="#organizatorius" data-org-link>Organizatoriui</a>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
