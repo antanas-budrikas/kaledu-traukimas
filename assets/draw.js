@@ -171,7 +171,7 @@ export function decodeTicket(text) {
 // Rule-based for the common endings; anything else stays as written.
 
 const VOCATIVE = [["ius", "iau"], ["us", "au"], ["as", "ai"], ["ys", "y"], ["is", "i"], ["ė", "e"]];
-const DATIVE = [["ius", "iui"], ["us", "ui"], ["as", "ui"], ["ys", "iui"], ["is", "iui"], ["ė", "ei"], ["a", "ai"]];
+const DATIVE = [["tis", "čiui"], ["dis", "džiui"], ["ius", "iui"], ["us", "ui"], ["as", "ui"], ["ys", "iui"], ["is", "iui"], ["ė", "ei"], ["a", "ai"]];
 
 function inflect(name, rules) {
   return name

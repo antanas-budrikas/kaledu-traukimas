@@ -144,8 +144,8 @@ function showTicket(ticket) {
   applySwatch($("[data-swatch]", view), ticket.c);
   $("[data-ticket-lead]", view).textContent = seen
     ? "Jau traukei. Jei pamiršai, ką ištraukei, išpakuok dovaną dar kartą."
-    : "Tavo dovana jau laukia. Išpakuok ją ir sužinok, kam šiemet ruoši dovaną ir kokios spalvos ji bus.";
-  $("[data-draw-label]", view).textContent = seen ? "Pažiūrėti dar kartą" : "Traukti";
+    : "Išpakuok dovaną ir sužinok, kam šiemet ją ruoši ir kokios spalvos ji bus.";
+  $("[data-draw-label]", view).textContent = seen ? "Išpakuoti dar kartą" : "Išpakuoti dovaną";
 
   gift.hidden = false;
   gift.classList.remove("is-shaking", "is-open");
@@ -282,7 +282,7 @@ function renderPreview() {
   const peoplePreview = $("[data-people-preview]");
   peoplePreview.replaceChildren(
     ...groups.map((g) =>
-      h("span", { class: "household", title: g.length > 1 ? "Negali traukti vienas kito" : null },
+      h("span", { class: "household", title: g.length > 1 ? "Vienas kito neištrauks" : null },
         ...g.map((name) => h("span", { class: "chip" }, name)))),
   );
   const colorPreview = $("[data-colors-preview]");
